@@ -1,39 +1,76 @@
 package day1
 
 import (
-	"slices"
 	"strconv"
 	"strings"
 
 	"github.com/mikeramage/aoc2025/utils"
 )
 
+type Rotation struct {
+	Clockwise bool
+	Distance  int
+}
+
+func NewRotation(clockwise bool, distance int) Rotation {
+	return Rotation{Clockwise: clockwise, Distance: distance}
+}
+
+func ApplyRotation(oldValue int, rotation Rotation) (newValue int, numZeroClicks int) {
+	numZeroClicks = 0
+
+	//First rotate to zero if not already at 0 and have enough distance to reach 0
+	if oldValue != 0 {
+		if rotation.Clockwise && (rotation.Distance >= (100 - oldValue)) {
+			rotation.Distance -= (100 - oldValue)
+			numZeroClicks++
+			oldValue = 0
+		} else if !rotation.Clockwise && (rotation.Distance >= oldValue) {
+			rotation.Distance -= oldValue
+			numZeroClicks++
+			oldValue = 0
+		}
+	}
+
+	numZeroClicks += (int)(rotation.Distance / 100)
+
+	if rotation.Clockwise {
+		newValue = (oldValue + rotation.Distance) % 100
+	} else {
+		newValue = (oldValue - rotation.Distance) % 100
+	}
+
+	if newValue < 0 {
+		newValue += 100
+	}
+
+	return newValue, numZeroClicks
+}
+
 func Day1() (int, int) {
 	lines := utils.Lines("./input/day1.txt")
-	var left, right []int
+	var rotations []Rotation
 
 	for _, line := range lines {
-		input := strings.Fields(line)
-		l, _ := strconv.Atoi(input[0])
-		r, _ := strconv.Atoi(input[1])
-		left = append(left, l)
-		right = append(right, r)
+		input := strings.TrimSpace(line)
+		clockwise := input[0] == 'R'
+		distance, _ := strconv.Atoi(input[1:])
+		rotations = append(rotations, NewRotation(clockwise, distance))
 	}
-
-	slices.Sort(left)
-	slices.Sort(right)
 
 	part1 := 0
-	m := make(map[int]int)
-	for i := 0; i < len(left); i++ {
-		diff := utils.Abs(left[i] - right[i])
-		part1 += diff
-		m[right[i]]++
-	}
-
 	part2 := 0
-	for _, l := range left {
-		part2 += m[l] * l
+
+	dialValue := 50
+	for i := 0; i < len(rotations); i++ {
+		var numZeroClicks int
+		dialValue, numZeroClicks = ApplyRotation(dialValue, rotations[i])
+
+		if dialValue == 0 {
+			part1++
+		}
+
+		part2 += numZeroClicks
 	}
 
 	return part1, part2
