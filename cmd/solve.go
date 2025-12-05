@@ -11,7 +11,7 @@ import (
 	// "github.com/mikeramage/aoc2025/day10"
 	// "github.com/mikeramage/aoc2025/day11"
 	// "github.com/mikeramage/aoc2025/day12"
-	// "github.com/mikeramage/aoc2025/day2"
+	"github.com/mikeramage/aoc2025/day2"
 	// "github.com/mikeramage/aoc2025/day3"
 	// "github.com/mikeramage/aoc2025/day4"
 	// "github.com/mikeramage/aoc2025/day5"
@@ -31,7 +31,7 @@ the associated solutions and visualizations`,
 	Run: func(cmd *cobra.Command, args []string) {
 		solutions := []func() (int, int){
 			day1.Day1,
-			// day2.Day2,
+			day2.Day2,
 			// day3.Day3,
 			// day4.Day4,
 			// day5.Day5,

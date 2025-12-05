@@ -8,3 +8,6 @@ Here we Go again again.
 This was painful. Like a slug on ketamine I slithered slowly towards a solution, only dimly aware of my surroundings, straining to comprehend the world through a fuzzy cloud of confusion and doubt. There's clever and then there's my code. There's fast and then there's my coding. 
 
 Dreary.
+
+## Day 2
+Rancid.
