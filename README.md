@@ -11,3 +11,6 @@ Dreary.
 
 ## Day 2
 Rancid.
+
+## Day 3
+That was actually more or less painless. My eyelids were drooping and my eyeballs were crossing uncontrollably and rolling up inside them for some reason, so the screen wasn't in focus for much of the time. But somehow that doesn't seem to have affected my performance. I'll take it.  
