@@ -14,7 +14,7 @@ import (
 	"github.com/mikeramage/aoc2025/day2"
 	"github.com/mikeramage/aoc2025/day3"
 
-	// "github.com/mikeramage/aoc2025/day4"
+	"github.com/mikeramage/aoc2025/day4"
 	// "github.com/mikeramage/aoc2025/day5"
 	// "github.com/mikeramage/aoc2025/day6"
 	// "github.com/mikeramage/aoc2025/day7"
@@ -34,7 +34,7 @@ the associated solutions and visualizations`,
 			day1.Day1,
 			day2.Day2,
 			day3.Day3,
-			// day4.Day4,
+			day4.Day4,
 			// day5.Day5,
 			// day6.Day6,
 			// day7.Day7,
